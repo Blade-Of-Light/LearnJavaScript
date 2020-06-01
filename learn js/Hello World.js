@@ -4,4 +4,10 @@ console.log('welcome to Canada');
 
 console.log("i like playing basketball");
 
+<<<<<<< Updated upstream
 console.log("this is papa's branch");
+
+console.log("my b entry");
+=======
+console.log('Entry A');
+>>>>>>> Stashed changes
