@@ -1,14 +1,19 @@
-var person = {
-    language : 'English',
-    sign : function() {
-        this.language = 'sign language';
-        return this.language;
+var person  = {
+    name : 'person',
+    language : 'english',
+    teach : function(language){
+        return this.language = language;
     }
 }
 
-var monkey = {
-    language : person.sign(),
+console.log(person.language);
+
+console.log(person.teach('sign language'));
+
+var animal = {
+    language : 'n/a'
 }
 
-console.log(monkey.language);
-console.log(typeof(person.sign()));
+console.log(animal.language);
+
+console.log(person.teach.call(animal, 'animal sign langauge'));
