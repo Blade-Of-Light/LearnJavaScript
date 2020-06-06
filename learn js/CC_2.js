@@ -42,3 +42,5 @@ function highestAVG (per1, per2, per3){
     }
     return 'their teams scored an equal average at: ' + highVal;
 }
+
+console.log (highestAVG(mary, mike, john));
