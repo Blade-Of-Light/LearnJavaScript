@@ -11,7 +11,7 @@ var john = {
 }
 
 //per = person. For comparing total bmi
-function bool (per1, per2) {
+function compareBMI (per1, per2) {
  bmi1 = per1.mass * Math.pow(per1.height, 2);
  bmi2 = per2.mass * Math.pow(per2.height, 2);
 
@@ -23,3 +23,5 @@ function bool (per1, per2) {
     }
     return console.log(per2.name + '\'s bmi is higher at: ' + bmi2);
 }
+
+compareBMI();
