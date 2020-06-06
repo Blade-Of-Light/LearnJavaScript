@@ -24,4 +24,4 @@ function compareBMI (per1, per2) {
     return console.log(per2.name + '\'s bmi is higher at: ' + bmi2);
 }
 
-compareBMI();
+compareBMI(mark, john);
