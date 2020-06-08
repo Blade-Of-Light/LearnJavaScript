@@ -21,6 +21,7 @@ function tipAmmount (arr){
     for (var i = 0; i < tipTotal.length; i++){
         tipAVG =+ tipTotal[i];
     }
+    tipAVG / tipTotal.length;
     return tipTotal + ' indevidual tips are: ' + tip + ' the average is: ' + tipAVG ;
 }
 
