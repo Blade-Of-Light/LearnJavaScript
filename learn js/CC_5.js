@@ -18,7 +18,7 @@ function tipAmmount (arr){
         tip[i] = arr[i] * 0.1;
     }
     var tipAVG = 0;
-    for (int i = 0; i < tipTotal.length; i++){
+    for (var i = 0; i < tipTotal.length; i++){
         tipAVG =+ tipTotal[i];
     }
     return tipTotal + ' indevidual tips are: ' + tip + ' the average is: ' + tipAVG ;
