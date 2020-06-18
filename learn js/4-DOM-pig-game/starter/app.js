@@ -12,9 +12,14 @@ GAME RULES:
 //document.querySelector('current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
 //var x = document.querySelector('#score-0').textContent;
 
+//default var
+var DEFAULT_WIN
+
+DEFAULT_WIN = 50;
+
 var game, scores, roundScore, activePlayer;
 //new vars
-var sixCounter;
+var sixCounter, winCondition;
 init();
 
 
@@ -57,7 +62,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];    
     }   
     //check if player is at 50 points
-    if(scores[activePlayer] >= 50){     
+    if(scores[activePlayer] >= winCondition){     
         document.querySelector('#name-' + activePlayer).textContent = 'Winner';  
         document.querySelector('.dice').style.display = 'none';
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -107,4 +112,9 @@ function init () {
     document.querySelector('.player-0-panel').classList.remove('winner');
     document.querySelector('.player-1-panel').classList.remove('winner');
     document.querySelector('.player-0-panel').classList.add('active');
+    winCondition = prompt('please enter a win condition', 'the default is 50')
+
+    if(isNaN(winCondition)){
+        winCondition = DEFAULT_WIN;
+    }
 }
