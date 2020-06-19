@@ -27,18 +27,22 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     if(game){
         //random number
         var dice = Math.floor(Math.random() * 6) + 1;
+        var die = Math.floor(Math.random() * 6) + 1;
         
         //number display
         var diceDOM = document.querySelector('.dice');
+        var dieDOM = document.querySelector('.die');
         diceDOM.style.display = 'block';
+        dieDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
+        dieDOM.src = 'dice-' + die + '.png';
         
         //update if dice number does not equal 1
-        if(dice > 1) {
+        if(dice > 1 && die > 1) {
             //add score
-            roundScore += dice;
+            roundScore += dice + die;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
-            if(dice === 6) {
+            if(dice === 6 || die === 6) {
                 sixCounter ++;
                 if(sixCounter === 2){
                     scores[activePlayer] = 0;
@@ -65,6 +69,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
     if(scores[activePlayer] >= winCondition){     
         document.querySelector('#name-' + activePlayer).textContent = 'Winner';  
         document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.die').style.display = 'none';
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
         document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
         game = false;
@@ -87,6 +92,7 @@ function nextPlayer() {
     document.querySelector('.player-1-panel').classList.toggle('active');
 
     document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.die').style.display = 'none';
 
     sixCounter = 0;
 }
@@ -100,6 +106,7 @@ function init () {
     sixCounter = 0;
 
     document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.die').style.display = 'none';
 
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
