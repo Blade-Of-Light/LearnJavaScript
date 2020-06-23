@@ -1,6 +1,52 @@
 var budgetController = (function() {
 
+    var Expense = function(id, desc, val) {
+        this.id = id;
+        this.desc = desc;
+        this.val = val;
+    }
 
+    var Income = function(id, desc, val) {
+        this.id = id;
+        this.desc = desc;
+        this.val = val;
+    }
+
+    var allExpenses = [];
+    var allIncome = [];
+
+    var data = {
+        allItems: {
+            expenses: [],
+            incomes: []
+        },
+        totals: {
+            expenses: 0,
+            incomes: 0
+        }
+    }
+
+    return {
+        addItem: function(type, desc, val) {
+            var newItem, id;
+
+            //create new id
+            id = data.allItems[type][data.allItems[type].length - 1].id + 1;
+
+            //create new item based on 'inc'/'exp' type
+            if(type === 'exp') {
+                newItem = new Expense(id, desc, val);
+            }  else if (type === 'inc') {
+                newItem = new Income(id, desc, val);
+            }
+            
+            //push to data structure
+            data.allItems[type].push(newItem);
+
+            //makes data public
+            return newItem;
+        }
+    }
 
 })();
 
@@ -48,14 +94,22 @@ var controller = (function(budgetCtrl, UICtrl) {
     }
 
     var ctrlAddItem = function() {
-        var input = UICtrl.getInput();
-        console.log(input);
+        var input, id
+        
+        input = UICtrl.getInput();
+
+        if(data.allItems.length > 0){
+            id = budgetCtrl.addItem(input.type, input.description, input.val);
+        } else {
+            id = 0;
+        }
+
 
         console.log('working');
     }
 
     return {
-        init: function(){
+        init: function() {
             console.log('Application has started');
             setupEventListeners();
         }
@@ -63,4 +117,5 @@ var controller = (function(budgetCtrl, UICtrl) {
 
 })(budgetController, UIController);
 
+//init
 controller.init();
