@@ -3,16 +3,27 @@ var budgetController = (function() {
 
     var Expense = function(id, description, value) {
         this.id = id;
+<<<<<<< Updated upstream
         this.description = description;
         this.value = value;
+=======
+        this.desc = desc;
+        this.val = val;
+>>>>>>> Stashed changes
     };
 
     var Income = function(id, description, value) {
         this.id = id;
+<<<<<<< Updated upstream
         this.description = description;
         this.value = value;
     };
 
+=======
+        this.desc = desc;
+        this.val = val;
+    };
+>>>>>>> Stashed changes
 
     var allExpenses = [];
     var allIncomes = [];
@@ -35,9 +46,15 @@ var budgetController = (function() {
 
             //ID = Last ID + 1
             if(data.allItems[type].length > 0){
+<<<<<<< Updated upstream
                 ID = data.allItems[type][data.allItems[type].length - 1].ID + 1;
             } else {
                 ID = 0;
+=======
+                id = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            } else {
+                id = 0;
+>>>>>>> Stashed changes
             }
 
 
@@ -71,15 +88,27 @@ var UIController = (function () {
         inputDescription: '.add__description',
         inputValue: '.add__value',
         inputBtn: '.add__btn'
-    }
+    };
 
     return {
         getInput: function() {
             return {
+<<<<<<< Updated upstream
                 type : document.querySelector(DOMstrings.inputType).value,
                 description : document.querySelector(DOMstrings.inputDescription).value,
                 value : document.querySelector(DOMstrings.inputValue).value
             }
+=======
+                type : document.querySelector(DOMstrings.inputType).value, //ill be 'inc' or 'exp'
+                description : document.querySelector(DOMstrings.inputDesc).value,
+                value : parseFloat(document.querySelector(DOMstrings.inputValue).value)
+            };
+
+        },
+
+        addListItem: function(obj, type) {
+
+>>>>>>> Stashed changes
         },
 
         getDOMstrings : function() {
@@ -111,7 +140,19 @@ var controller = (function(budgetCtrl, UICtrl) {
 
     
     var ctrlAddItem = function() {
+<<<<<<< Updated upstream
             var input, newItem;
+=======
+        var input, newItem;
+        
+        //1. get the field input data
+        input = UICtrl.getInput();
+
+        //2. add to budget controller
+        newItem = budgetCtrl.addItem(input.type, input.desc, input.val);
+
+        //3. add to ui
+>>>>>>> Stashed changes
 
             // 1. Get the field input data
             input = UICtrl.getInput();
